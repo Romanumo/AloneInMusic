@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     //Movement Variables
     CharacterController charController;
