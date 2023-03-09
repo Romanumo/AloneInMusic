@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Seeker : Movement
 {
-    // Start is called before the first frame update
-    void Start()
+    private Transform target;
+
+    private void Start()
     {
-        
+        target = GetComponent<IWatcher>().target;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Move()
     {
-        
+        this.transform.LookAt(target);
+        this.transform.position += new Vector3(0, 0, 1) * speed * Time.deltaTime;
     }
 }

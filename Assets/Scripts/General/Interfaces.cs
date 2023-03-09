@@ -13,10 +13,9 @@ public interface IHealth
 public interface IWatcher
 {
     public Transform target { get; }
-    public float noticeDistance { get; }
-    public bool CheckDistance();
-
-    public event Action onNotice;
+    public float noticeDistanceSqr { get; }
+    public Action onNotice { get; }
+    public void CheckTarget();
 }
 
 public interface IMoveable

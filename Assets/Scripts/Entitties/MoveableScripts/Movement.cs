@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Movement : MonoBehaviour
 {
-    protected int _speed;
+    [SerializeField] protected int _speed;
     public int speed { get => _speed; }
+
+    public abstract void Move();
 }
