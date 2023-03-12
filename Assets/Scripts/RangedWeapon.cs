@@ -8,12 +8,13 @@ public class RangedWeapon : Weapon, IWatcher
     [SerializeField] private float _attackRange;
 
     private Transform _target;
+    private IHealth _targetStats;
     private float _attackRangeSqr;
 
     private event Action _onAttackRange;
     private event Action _outAttackRange;
 
-    private HarmfulEntity owner;
+    private Entity owner;
 
     #region Interfaces
     public Transform target => _target;
@@ -26,10 +27,11 @@ public class RangedWeapon : Weapon, IWatcher
     {
         _attackRangeSqr = _attackRange * _attackRange;
         _target = GetComponent<IWatcher>().target;
+        _targetStats = _target.GetComponent<IHealth>();
 
-        owner = GetComponent<HarmfulEntity>();
-        _onAttackRange = () => owner.ChangeState(State.Attacking);
-        _outAttackRange = () => owner.ChangeState(State.Moving);
+        owner = GetComponent<ActiveEntity>();
+        _onAttackRange = () => owner.ChangeState(this);
+        _outAttackRange = () => owner.ChangeState(null);
     }
 
     private void Update()
@@ -37,8 +39,8 @@ public class RangedWeapon : Weapon, IWatcher
         ((IWatcher)this).CheckTarget(transform);
     }
 
-    public override void Attack(IHealth damageableObject)
+    public override void UpdateAction()
     {
-        damageableObject.ModifyHealth(this.attack, this);
+        _targetStats.ModifyHealth(this.attack, this);
     }
 }

@@ -11,7 +11,7 @@ public class Seeker : Movement
         target = GetComponent<IWatcher>().target;
     }
 
-    public override void Move()
+    public override void UpdateAction()
     {
         this.transform.LookAt(target, Vector3.up);
         this.transform.position += transform.forward * speed * Time.deltaTime;

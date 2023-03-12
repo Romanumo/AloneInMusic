@@ -7,6 +7,5 @@ public abstract class Movement : MonoBehaviour, IEntityState
     [SerializeField] protected int _speed;
     public int speed { get => _speed; }
 
-    public abstract void Move();
     public abstract void UpdateAction();
 }

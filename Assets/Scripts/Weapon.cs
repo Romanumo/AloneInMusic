@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour
+public abstract class Weapon : MonoBehaviour, IEntityState
 {
     [SerializeField] public int attack;
     [SerializeField] LayerMask atttackableLayer;
-    public abstract void Attack(IHealth damageableObject);
+
+    public abstract void UpdateAction();
 }

@@ -37,10 +37,5 @@ public interface IMoveable
     public Movement movement { get; }
 }
 
-public interface IAttacker
-{
-    public int attack { get; }
-    public Weapon weapon { get; }
-}
 
 // IAttacker with IWeapon interface implementation?
