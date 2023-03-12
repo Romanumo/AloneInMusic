@@ -14,6 +14,8 @@ public class HarmfulEntity : Entity, IAttacker, IWatcher
     private event Action _onVisionRange;
     private event Action _outVisionRange;
 
+    private IEntityState state;
+
     #region Interfaces
     public int attack { get => weapon.attack; }
     public Weapon weapon { get => _weapon; }
@@ -34,25 +36,22 @@ public class HarmfulEntity : Entity, IAttacker, IWatcher
         _visionRangeSqr = _visionRange * _visionRange;
         _weapon = this.gameObject.GetComponent<Weapon>();
 
-        _outVisionRange = () => state = State.Idle;
-        _onVisionRange = () => { if (state == State.Idle) state = State.Moving; };
+        _outVisionRange = () => ChangeState(State.Idle);
+        _onVisionRange = () => ChangeState(State.Moving);
     }
 
     private void Update()
     {
-        CheckTarget();
-        if (state == State.Moving)
-            _movement.Move();
-        else if (state == State.Attacking)
+        ((IWatcher)this).CheckTarget(transform);
+        if (state == State.Attacking)
             _weapon.Attack(_target);
+        else if (state == State.Moving)
+            _movement.Move();
     }
 
-    public void CheckTarget()
+    public override void ChangeState(State state)
     {
-        if ((transform.position - target.position).sqrMagnitude < rangeSqr)
-            onInRange?.Invoke();
-        else 
-            onOutRange?.Invoke();
+        this.state = state;
     }
 
     public override void Die()

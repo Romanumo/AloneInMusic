@@ -542,7 +542,7 @@ MonoBehaviour:
   atttackableLayer:
     serializedVersion: 2
     m_Bits: 2147483647
-  _attackRange: 20
+  _attackRange: 10
 --- !u!54 &1564202364
 Rigidbody:
   m_ObjectHideFlags: 0

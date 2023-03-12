@@ -15,10 +15,12 @@ public class RangedWeapon : Weapon, IWatcher
 
     private HarmfulEntity owner;
 
+    #region Interfaces
     public Transform target => _target;
     public float rangeSqr => _attackRangeSqr;
     public Action onInRange => _onAttackRange;
-    public Action onOutRange => _outAttackRange;
+    public Action onOutRange => _outAttackRange; 
+    #endregion
 
     public void Awake()
     {
@@ -32,19 +34,11 @@ public class RangedWeapon : Weapon, IWatcher
 
     private void Update()
     {
-        CheckTarget();
+        ((IWatcher)this).CheckTarget(transform);
     }
 
-    public override void Attack(Entity entity)
+    public override void Attack(IHealth damageableObject)
     {
-        entity.ModifyHealth(this.attack, this);
-    }
-
-    public void CheckTarget()
-    {
-        if ((transform.position - target.position).sqrMagnitude < rangeSqr)
-            onInRange?.Invoke();
-        else
-            onOutRange?.Invoke();
+        damageableObject.ModifyHealth(this.attack, this);
     }
 }

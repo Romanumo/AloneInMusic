@@ -24,15 +24,19 @@ public abstract class Entity : MonoBehaviour, IHealth, IMoveable
         _movement = GetComponent<Movement>();
     }
 
-    public void ChangeState(State state)
+    public virtual void ChangeState(State state)
     {
-        this.state = state;
+        if (state == State.Attacking)
+            Debug.LogError("Entity dont have attack state");
+        else
+            this.state = state;
     }
 
-    public abstract void Die();
     public virtual void ModifyHealth(int attack, Weapon sender)
     {
         Debug.Log(this.gameObject.name + " Received damage from " + sender.gameObject.name);
         health -= attack;
     }
+
+    public abstract void Die();
 }
