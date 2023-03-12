@@ -10,17 +10,31 @@ public interface IHealth
     public void ModifyHealth(int attack, Weapon sender);
 }
 
-public interface IEntityState
+public interface IBehaviourState
 {
     public void UpdateAction();
 }
 
-public interface IStateWatcher
+public interface ITargeted
 {
-    public Dictionary<float, IEntityState> rangeStates { get; }
+    public Transform target { get; }
 }
 
-public interface IWatcher
+public interface IStateWatcher : ITargeted
+{
+    public List<RangedState> rangeStates { get; }
+    public void AddState(float range, IBehaviourState state);
+    public IBehaviourState GetPrioritizedState();
+}
+
+public interface IMoveable
+{
+    public int speed { get; }
+    public Movement movement { get; }
+}
+
+// IAttacker with IWeapon interface implementation?
+/*public interface IWatcher
 {
     public Transform target { get; }
     public float rangeSqr { get; }
@@ -34,13 +48,4 @@ public interface IWatcher
         else
             onOutRange?.Invoke();
     }
-}
-
-public interface IMoveable
-{
-    public int speed { get; }
-    public Movement movement { get; }
-}
-
-
-// IAttacker with IWeapon interface implementation?
+}*/

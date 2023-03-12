@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedWeapon : Weapon, IWatcher
+public class RangedWeapon : Weapon
 {
     [SerializeField] private float _attackRange;
 
@@ -11,32 +11,16 @@ public class RangedWeapon : Weapon, IWatcher
     private IHealth _targetStats;
     private float _attackRangeSqr;
 
-    private event Action _onAttackRange;
-    private event Action _outAttackRange;
-
-    private Entity owner;
-
-    #region Interfaces
-    public Transform target => _target;
-    public float rangeSqr => _attackRangeSqr;
-    public Action onInRange => _onAttackRange;
-    public Action onOutRange => _outAttackRange; 
-    #endregion
+    private IStateWatcher owner;
 
     public void Awake()
     {
         _attackRangeSqr = _attackRange * _attackRange;
-        _target = GetComponent<IWatcher>().target;
+        owner = GetComponent<IStateWatcher>();
+        _target = owner.target;
         _targetStats = _target.GetComponent<IHealth>();
 
-        owner = GetComponent<ActiveEntity>();
-        _onAttackRange = () => owner.ChangeState(this);
-        _outAttackRange = () => owner.ChangeState(null);
-    }
-
-    private void Update()
-    {
-        ((IWatcher)this).CheckTarget(transform);
+        owner.AddState(_attackRangeSqr, this);
     }
 
     public override void UpdateAction()

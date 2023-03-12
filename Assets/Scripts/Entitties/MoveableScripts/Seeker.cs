@@ -8,7 +8,7 @@ public class Seeker : Movement
 
     private void Start()
     {
-        target = GetComponent<IWatcher>().target;
+        target = GetComponent<ITargeted>().target;
     }
 
     public override void UpdateAction()

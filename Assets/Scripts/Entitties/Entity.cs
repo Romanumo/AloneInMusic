@@ -11,7 +11,7 @@ public abstract class Entity : MonoBehaviour, IHealth, IMoveable
 {
     [SerializeField] protected int _health;
     protected Movement _movement;
-    protected IEntityState stateAction;
+    protected IBehaviourState stateAction;
 
     public int health { get => _health; set => _health = value; }
     public int speed { get => _movement.speed; }
@@ -34,7 +34,26 @@ public abstract class Entity : MonoBehaviour, IHealth, IMoveable
         health -= attack;
     }
 
-    public void ChangeState(IEntityState state) => this.stateAction = state;
+    public void ChangeState(IBehaviourState state) => this.stateAction = state;
 
     public abstract void Die();
+}
+
+public class RangedState
+{
+    public float range;
+    public IBehaviourState state;
+
+    public RangedState(float range, IBehaviourState state)
+    {
+        this.range = range;
+        this.state = state;
+    }
+
+    public bool Check(float dist)
+    {
+        if (dist < range)
+            return true;
+        return false;
+    }
 }
