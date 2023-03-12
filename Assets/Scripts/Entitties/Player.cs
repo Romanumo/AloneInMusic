@@ -8,10 +8,5 @@ public class Player : Entity
     {
         throw new System.NotImplementedException();
     }
-
-    public override void ModifyHealth()
-    {
-        throw new System.NotImplementedException();
-    }
 }
 

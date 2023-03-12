@@ -5,52 +5,57 @@ using UnityEngine;
 
 public class HarmfulEntity : Entity, IAttacker, IWatcher
 {
-    [SerializeField] private float _noticeDistance;
-    private float _noticeDistanceSqr;
+    [SerializeField] private float _visionRange;
+    private float _visionRangeSqr;
 
     private Weapon _weapon;
-    private Transform _target;
-    private event Action _onNotice;
+    private Entity _target;
+
+    private event Action _onVisionRange;
+    private event Action _outVisionRange;
 
     #region Interfaces
     public int attack { get => weapon.attack; }
     public Weapon weapon { get => _weapon; }
-    public float noticeDistanceSqr => _noticeDistanceSqr;
-    public Transform target => _target;
-    public Action onNotice => _onNotice; 
+    public float rangeSqr => _visionRangeSqr;
+    public Transform target => _target.transform;
+    public Action onInRange => _onVisionRange; 
+    public Action onOutRange => _outVisionRange;
     #endregion
 
-    private new void Start()
+    private new void Awake()
     {
-        base.Start();
+        base.Awake();
 
         //Temporarily
-        _target = FindObjectOfType<Player>().transform;
+        _target = FindObjectOfType<Player>();
         //
 
-        _noticeDistanceSqr = _noticeDistance * _noticeDistance;
+        _visionRangeSqr = _visionRange * _visionRange;
         _weapon = this.gameObject.GetComponent<Weapon>();
-        _onNotice = () => state = State.Moving;
+
+        _outVisionRange = () => state = State.Idle;
+        _onVisionRange = () => { if (state == State.Idle) state = State.Moving; };
     }
 
-    private new void Update()
+    private void Update()
     {
+        CheckTarget();
         if (state == State.Moving)
             _movement.Move();
+        else if (state == State.Attacking)
+            _weapon.Attack(_target);
     }
 
     public void CheckTarget()
     {
-        if ((transform.position - target.position).sqrMagnitude < noticeDistanceSqr)
-            onNotice?.Invoke();
+        if ((transform.position - target.position).sqrMagnitude < rangeSqr)
+            onInRange?.Invoke();
+        else 
+            onOutRange?.Invoke();
     }
 
     public override void Die()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override void ModifyHealth()
     {
         throw new NotImplementedException();
     }

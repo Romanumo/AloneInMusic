@@ -9,8 +9,4 @@ public class AnxietyGhost : HarmfulEntity
         throw new System.NotImplementedException();
     }
 
-    public override void ModifyHealth()
-    {
-        throw new System.NotImplementedException();
-    }
 }

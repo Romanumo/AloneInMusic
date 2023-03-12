@@ -7,15 +7,13 @@ public interface IHealth
 {
     public int health { get; set; }
     public void Die();
-    public void ModifyHealth();
+    public void ModifyHealth(int attack, Weapon sender);
 }
 
 public interface IWatcher
 {
     public Transform target { get; }
-    public float noticeDistanceSqr { get; }
-    public Action onNotice { get; }
-    public void CheckTarget();
+    public Watcher watcher { get; }
 }
 
 public interface IMoveable

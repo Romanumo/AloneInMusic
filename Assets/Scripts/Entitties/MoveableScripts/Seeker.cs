@@ -13,7 +13,7 @@ public class Seeker : Movement
 
     public override void Move()
     {
-        this.transform.LookAt(target);
-        this.transform.position += new Vector3(0, 0, 1) * speed * Time.deltaTime;
+        this.transform.LookAt(target, Vector3.up);
+        this.transform.position += transform.forward * speed * Time.deltaTime;
     }
 }
