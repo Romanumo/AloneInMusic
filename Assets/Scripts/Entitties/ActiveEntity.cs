@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveEntity : Entity, IWatcher
+public class ActiveEntity : Entity, IStateWatcher
 {
     [SerializeField] private float _visionRange;
     private float _visionRangeSqr;
@@ -13,11 +13,14 @@ public class ActiveEntity : Entity, IWatcher
     private event Action _onVisionRange;
     private event Action _outVisionRange;
 
+    private Dictionary<float, IEntityState> _rangeStates;
+
     #region Interfaces
     public float rangeSqr => _visionRangeSqr;
     public Transform target => _target.transform;
     public Action onInRange => _onVisionRange; 
     public Action onOutRange => _outVisionRange;
+    public Dictionary<float, IEntityState> rangeStates => _rangeStates;
     #endregion
 
     private new void Awake()

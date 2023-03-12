@@ -15,6 +15,11 @@ public interface IEntityState
     public void UpdateAction();
 }
 
+public interface IStateWatcher
+{
+    public Dictionary<float, IEntityState> rangeStates { get; }
+}
+
 public interface IWatcher
 {
     public Transform target { get; }
