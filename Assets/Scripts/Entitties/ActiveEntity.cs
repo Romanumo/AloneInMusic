@@ -19,15 +19,11 @@ public class ActiveEntity : Entity, IStateWatcher
     private new void Awake()
     {
         base.Awake();
-
-        //Temporarily
-        _target = FindObjectOfType<Player>();
-        //
-
+        _target = GameManager.instance.enemiesTarget;
         _visionRangeSqr = _visionRange * _visionRange;
 
         _rangedStates = new List<RangedState>();
-        _rangedStates.Add(new RangedState(_visionRangeSqr, movement));
+        _rangedStates.Add(new RangedState(_visionRangeSqr, _movement));
     }
 
     private void Update()
@@ -50,10 +46,10 @@ public class ActiveEntity : Entity, IStateWatcher
         return lastRangedState.state;
     }
 
-    public void AddState(float range, IBehaviourState state) => _rangedStates.Add(new RangedState(range, state));
-
     public override void Die()
     {
-        throw new NotImplementedException();
+        Destroy(this.gameObject);
     }
+
+    public void AddState(float range, IBehaviourState state) => _rangedStates.Add(new RangedState(range, state));
 }

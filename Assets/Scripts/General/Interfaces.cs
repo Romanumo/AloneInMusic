@@ -5,7 +5,7 @@ using System;
 
 public interface IHealth
 {
-    public int health { get; set; }
+    public int health { get; }
     public void Die();
     public void ModifyHealth(int attack, Weapon sender);
 }
@@ -27,12 +27,6 @@ public interface IStateWatcher : ITargeted
     public IBehaviourState GetPrioritizedState();
 }
 
-public interface IMoveable
-{
-    public int speed { get; }
-    public Movement movement { get; }
-}
-
 // IAttacker with IWeapon interface implementation?
 /*public interface IWatcher
 {
@@ -48,4 +42,10 @@ public interface IMoveable
         else
             onOutRange?.Invoke();
     }
-}*/
+}
+
+public interface IMoveable
+{
+    public int speed { get; }
+}
+*/

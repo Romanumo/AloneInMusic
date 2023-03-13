@@ -7,15 +7,13 @@ As I see
 Use abstract when needed inherited objects and they are all almost the same type
 interfaces could be used in completely different objects suchh as door and Entity*/
 
-public abstract class Entity : MonoBehaviour, IHealth, IMoveable
+public abstract class Entity : MonoBehaviour, IHealth
 {
     [SerializeField] protected int _health;
     protected Movement _movement;
     protected IBehaviourState stateAction;
 
-    public int health { get => _health; set => _health = value; }
-    public int speed { get => _movement.speed; }
-    public Movement movement => _movement;
+    public int health { get => _health; }
 
     protected void Awake()
     {
@@ -27,11 +25,11 @@ public abstract class Entity : MonoBehaviour, IHealth, IMoveable
         stateAction?.UpdateAction();
     }
 
-
     public virtual void ModifyHealth(int attack, Weapon sender)
     {
-        Debug.Log(this.gameObject.name + " Received damage from " + sender.gameObject.name);
-        health -= attack;
+        _health -= attack;
+        if (_health < 0)
+            Die();
     }
 
     public void ChangeState(IBehaviourState state) => this.stateAction = state;

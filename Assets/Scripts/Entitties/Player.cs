@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Player : Entity
 {
+
+
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        GameManager.instance.ChangeGameState(GameState.Loss);
     }
 }
 
