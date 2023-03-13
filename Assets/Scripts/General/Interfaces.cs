@@ -27,6 +27,12 @@ public interface IStateWatcher : ITargeted
     public IBehaviourState GetPrioritizedState();
 }
 
+public interface IRanged
+{
+    public IStateWatcher watcher { get; }
+    public float rangeSqr { get; }
+}
+
 // IAttacker with IWeapon interface implementation?
 /*public interface IWatcher
 {

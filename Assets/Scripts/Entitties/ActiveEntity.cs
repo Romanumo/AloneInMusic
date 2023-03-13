@@ -11,15 +11,13 @@ public class ActiveEntity : Entity, IStateWatcher
     private Entity _target;
     private List<RangedState> _rangedStates;
 
-    #region Interfaces
     public Transform target => _target.transform;
     public List<RangedState> rangeStates => _rangedStates;
-    #endregion
 
     private new void Awake()
     {
         base.Awake();
-        _target = GameManager.instance.enemiesTarget;
+        _target = FindObjectOfType<Player>();
         _visionRangeSqr = _visionRange * _visionRange;
 
         _rangedStates = new List<RangedState>();

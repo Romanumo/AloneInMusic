@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private int attack;
+    private Weapon weapon;
     private Movement movement;
 
     private void Start()
@@ -14,5 +16,20 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         movement.UpdateAction();   
+    }
+
+    public void AssignBullet(int attack, Weapon weapon)
+    {
+        this.attack = attack;
+        this.weapon = weapon;
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        IHealth health;
+        if (collision.gameObject.TryGetComponent<IHealth>(out health))
+        {
+            health.ModifyHealth(attack, weapon);
+        }
     }
 }

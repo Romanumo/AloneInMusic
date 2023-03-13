@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetedWeapon : Weapon
+public class TargetedWeapon : Weapon, IRanged
 {
     [SerializeField] private float _attackRange;
 
     private IHealth _targetStats;
     private float _attackRangeSqr;
-
     private IStateWatcher owner;
+
+    public IStateWatcher watcher => owner;
+    public float rangeSqr => _attackRangeSqr;
 
     public override void Attack()
     {
