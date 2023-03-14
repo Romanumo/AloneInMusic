@@ -37,6 +37,7 @@ public abstract class Entity : MonoBehaviour, IHealth
     public abstract void Die();
 }
 
+[System.Serializable]
 public class RangedState
 {
     public float range;

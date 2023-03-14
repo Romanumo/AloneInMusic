@@ -15,10 +15,10 @@ public class BulletWeapon : Weapon, IRanged
 
     void Start()
     {
-        owner = GetComponent<IStateWatcher>();
-        _attackRangeSqr = _attackRange * _attackRange;
+        //owner = GetComponent<IStateWatcher>();
+        //_attackRangeSqr = _attackRange * _attackRange;
 
-        owner.AddState(rangeSqr, this);
+        //owner.AddState(rangeSqr, this);
     }
 
     public override void Attack()

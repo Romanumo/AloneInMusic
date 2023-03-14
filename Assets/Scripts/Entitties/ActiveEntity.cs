@@ -9,7 +9,7 @@ public class ActiveEntity : Entity, IStateWatcher
     private float _visionRangeSqr;
 
     private Entity _target;
-    private List<RangedState> _rangedStates;
+    [SerializeField]private List<RangedState> _rangedStates;
 
     public Transform target => _target.transform;
     public List<RangedState> rangeStates => _rangedStates;
