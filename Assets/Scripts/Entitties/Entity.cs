@@ -40,18 +40,23 @@ public abstract class Entity : MonoBehaviour, IHealth
 [System.Serializable]
 public class RangedState
 {
-    public float range;
-    public IBehaviourState state;
+    [HideInInspector] public string _name;
+    [SerializeField] private float _range;
+    [SerializeField] private IBehaviourState _state;
+
+    public float rangeSqr { get => _range * _range; }
+    public IBehaviourState state { get => _state; }
 
     public RangedState(float range, IBehaviourState state)
     {
-        this.range = range;
-        this.state = state;
+        _range = range;
+        _state = state;
+        _name = state?.ToString();
     }
 
     public bool Check(float dist)
     {
-        if (dist < range)
+        if (dist < _range)
             return true;
         return false;
     }

@@ -5,11 +5,8 @@ using UnityEngine;
 
 public class ActiveEntity : Entity, IStateWatcher
 {
-    [SerializeField] private float _visionRange;
-    private float _visionRangeSqr;
-
+    [SerializeField] private List<RangedState> _rangedStates;
     private Entity _target;
-    [SerializeField]private List<RangedState> _rangedStates;
 
     public Transform target => _target.transform;
     public List<RangedState> rangeStates => _rangedStates;
@@ -18,16 +15,14 @@ public class ActiveEntity : Entity, IStateWatcher
     {
         base.Awake();
         _target = FindObjectOfType<Player>();
-        _visionRangeSqr = _visionRange * _visionRange;
-
-        _rangedStates = new List<RangedState>();
-        _rangedStates.Add(new RangedState(_visionRangeSqr, _movement));
     }
 
     private void Update()
     {
         base.Update();
         ChangeState(GetPrioritizedState());
+        for (int i = 0; i < _rangedStates.Count; i++)
+            Debug.Log(i + " " + _rangedStates[i].state);
     }
 
     public IBehaviourState GetPrioritizedState()
@@ -37,11 +32,21 @@ public class ActiveEntity : Entity, IStateWatcher
         foreach (RangedState state in _rangedStates)
         {
             bool isWithin = state.Check(distSqr);
-            bool isMorePrioritized = (state.range < lastRangedState.range || lastRangedState.state == null);
+            bool isMorePrioritized = (state.rangeSqr < lastRangedState.rangeSqr || lastRangedState.state == null);
             if (isWithin && isMorePrioritized)
                 lastRangedState = state;
         }
         return lastRangedState.state;
+    }
+
+    public void UpdateBehavioursList()
+    {
+        _rangedStates = new List<RangedState>();
+        IBehaviourState[] states = GetComponents<IBehaviourState>();
+        foreach (IBehaviourState state in states)
+        {
+            _rangedStates.Add(new RangedState(0, state));
+        }
     }
 
     public override void Die()

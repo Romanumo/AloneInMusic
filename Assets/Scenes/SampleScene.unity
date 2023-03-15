@@ -240,7 +240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &791361225
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -283,7 +283,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10
-  _visionRange: 50
+  _rangedStates:
+  - _name: 
+    _range: 0
+  - _name: 
+    _range: 0
+  - _name: 
+    _range: 0
 --- !u!114 &791361228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,7 +396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 0
   reloadTime: 0
-  _attackRange: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +691,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10
-  _visionRange: 50
+  _rangedStates:
+  - _name: Enemy (Seeker)
+    _range: 0
+  - _name: Enemy (TargetedWeapon)
+    _range: 0
 --- !u!114 &1564202362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +723,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 1
   reloadTime: 1
-  _attackRange: 10
 --- !u!54 &1564202364
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1069,7 +1077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &2067755194
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1127,8 +1135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d51c49899726f48b1cbc5dd06ae65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
-  _visionRange: 50
+  _health: 16
+  _rangedStates:
+  - _name: 
+    _range: 0
+  - _name: 
+    _range: 0
 --- !u!136 &2067755198
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -3,16 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetedWeapon : Weapon, IRanged
+public class TargetedWeapon : Weapon
 {
-    [SerializeField] private float _attackRange;
-
     private IHealth _targetStats;
-    private float _attackRangeSqr;
-    private IStateWatcher owner;
+    private ITargeted owner;
 
-    public IStateWatcher watcher => owner;
-    public float rangeSqr => _attackRangeSqr;
+    public ITargeted watcher => owner;
 
     public override void Attack()
     {
@@ -21,10 +17,7 @@ public class TargetedWeapon : Weapon, IRanged
 
     public void Awake()
     {
-        _attackRangeSqr = _attackRange * _attackRange;
-        owner = GetComponent<IStateWatcher>();
+        owner = GetComponent<ITargeted>();
         _targetStats = owner.target.GetComponent<IHealth>();
-
-        owner.AddState(_attackRangeSqr, this);
     }
 }
