@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public abstract class Behaviour : MonoBehaviour
+{
+    public abstract void UpdateAction();
+}
+
 public interface IHealth
 {
     public int health { get; }
+    public int maxHealth { get; }
     public void Die();
     public void ModifyHealth(int attack, Weapon sender);
-}
-
-public interface IBehaviourState
-{
-    public void UpdateAction();
 }
 
 public interface ITargeted
@@ -23,14 +24,7 @@ public interface ITargeted
 public interface IStateWatcher : ITargeted
 {
     public List<RangedState> rangeStates { get; }
-    public void AddState(float range, IBehaviourState state);
-    public IBehaviourState GetPrioritizedState();
-}
-
-public interface IRanged
-{
-    public IStateWatcher watcher { get; }
-    public float rangeSqr { get; }
+    public void UpdateState();
 }
 
 // IAttacker with IWeapon interface implementation?
@@ -54,4 +48,7 @@ public interface IMoveable
 {
     public int speed { get; }
 }
+
+    public IStateWatcher watcher { get; }
+    public float rangeSqr { get; }
 */

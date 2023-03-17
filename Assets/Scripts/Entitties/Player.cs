@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    Weapon weapon;
-    private void Start()
+    [SerializeField] private BarDisplayer _healthDisplayer;
+    Weapon _weapon;
+
+    private new void Awake()
     {
-        weapon = GetComponent<Weapon>();
+        base.Awake();
+        _weapon = GetComponent<Weapon>();
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonUp(0))
-            weapon.UpdateAction();
+            _weapon?.UpdateAction();
+    }
+
+    public override void ModifyHealth(int attack, Weapon sender)
+    {
+        base.ModifyHealth(attack, sender);
+        _healthDisplayer.UpdateBar((float)((float)health / (float)maxHealth));
     }
 
     public override void Die()

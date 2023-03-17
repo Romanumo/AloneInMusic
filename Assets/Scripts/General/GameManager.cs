@@ -6,11 +6,9 @@ public enum GameState { Player, Win, Loss }
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
-
-    [SerializeField] private Entity _enemiesTarget;
-
     public Entity enemiesTarget { get => _enemiesTarget; }
 
+    [SerializeField] private Entity _enemiesTarget;
     private GameState state;
 
     public void Awake()
@@ -22,7 +20,27 @@ public class GameManager : MonoBehaviour
     public void ChangeGameState(GameState state)
     {
         this.state = state;
-        if (state == GameState.Loss)
-            Debug.Log("GameOver");
+        switch (state)
+        {
+            case GameState.Loss:
+                Debug.Log("Game Over!");
+                break;
+            case GameState.Win:
+                Debug.Log("Win!");
+                break;
+        }
+    }
+
+    public static RangedState GetPrioritizedState(float distanceSqr, List<RangedState> states)
+    {
+        RangedState lastRangedState = new RangedState(distanceSqr, null);
+        foreach (RangedState state in states)
+        {
+            bool isWithin = state.Check(distanceSqr);
+            bool isMorePrioritized = (state.rangeSqr < lastRangedState.rangeSqr || lastRangedState.behaviour == null);
+            if (isWithin && isMorePrioritized)
+                lastRangedState = state;
+        }
+        return lastRangedState;
     }
 }
