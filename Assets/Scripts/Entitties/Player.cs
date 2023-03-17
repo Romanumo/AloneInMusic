@@ -10,8 +10,8 @@ public class Player : Entity
     private new void Awake()
     {
         base.Awake();
-
         _weapon = GetComponent<Weapon>();
+        onHealthChanged += UpdateHealthBar;
     }
 
     private void Update()
@@ -20,9 +20,8 @@ public class Player : Entity
             _weapon?.UpdateAction();
     }
 
-    public override void ModifyHealth(int attack, Weapon sender)
+    public void UpdateHealthBar()
     {
-        base.ModifyHealth(attack, sender);
         _healthDisplayer.UpdateBar((float)((float)health / (float)maxHealth));
     }
 

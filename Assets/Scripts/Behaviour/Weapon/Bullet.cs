@@ -5,6 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float liveTime;
+    [SerializeField] private ParticleSystem collisionEffect;
+
     private int attack;
     private Weapon weapon;
     private Movement movement;
@@ -33,6 +35,7 @@ public class Bullet : MonoBehaviour
         {
             health.ModifyHealth(attack, weapon);
         }
+        FXManager.CreateEffect(collisionEffect, transform);
         Die();
     }
 

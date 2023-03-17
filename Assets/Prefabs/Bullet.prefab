@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   liveTime: 10
+  collisionEffect: {fileID: 1554090992169100938, guid: a7c7a7a596ec118469dfcd62bc8aa049, type: 3}
 --- !u!114 &8691628387711670837
 MonoBehaviour:
   m_ObjectHideFlags: 0

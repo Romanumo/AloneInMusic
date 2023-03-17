@@ -14,12 +14,18 @@ public abstract class Entity : MonoBehaviour, IHealth
     protected int _maxHealth;
     protected Behaviour state;
 
+    protected Action onHealthChanged;
+    protected Action onDeath;
+
     public int health { get => _health; }
     public int maxHealth { get => _maxHealth; }
+    public Action OnHealthChanged { get => onHealthChanged; set => onHealthChanged = value; }
+    public Action OnDeath { get => onDeath; set => onDeath = value; }
 
     protected void Awake()
     {
         _maxHealth = _health;
+        onDeath += Die;
     }
 
     protected virtual void Update()
@@ -27,11 +33,12 @@ public abstract class Entity : MonoBehaviour, IHealth
         state?.UpdateAction();
     }
 
-    public virtual void ModifyHealth(int attack, Weapon sender)
+    public void ModifyHealth(int attack, Weapon sender)
     {
         _health -= attack;
+        onHealthChanged?.Invoke();
         if (_health < 0)
-            Die();
+            onDeath.Invoke();
     }
 
     public void ChangeState(Behaviour state) => this.state = state;

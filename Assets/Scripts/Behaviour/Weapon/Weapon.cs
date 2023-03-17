@@ -3,14 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : Behaviour, ISingleTimeBehavior
+public abstract class Weapon : SingleTimeBehavior
 {
     [SerializeField] public int attack;
     [SerializeField] public float reloadTime;
     bool isReloaded = true;
-    Action onTrigger;
-
-    public Action OnTrigger { get => OnTrigger; set => onTrigger = value; }
 
     public override void UpdateAction()
     {

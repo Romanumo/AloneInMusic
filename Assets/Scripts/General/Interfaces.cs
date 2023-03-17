@@ -8,15 +8,20 @@ public abstract class Behaviour : MonoBehaviour
     public abstract void UpdateAction();
 }
 
-public interface ISingleTimeBehavior
+public abstract class SingleTimeBehavior : Behaviour
 {
-    public Action OnTrigger { get; set; }
+    protected Action onTrigger;
+    public Action OnTrigger { get => onTrigger; set => onTrigger = value; }
 }
 
 public interface IHealth
 {
     public int health { get; }
     public int maxHealth { get; }
+
+    public Action OnHealthChanged { get; set; }
+    public Action OnDeath { get; set; }
+
     public void Die();
     public void ModifyHealth(int attack, Weapon sender);
 }
