@@ -8,6 +8,11 @@ public abstract class Behaviour : MonoBehaviour
     public abstract void UpdateAction();
 }
 
+public interface ISingleTimeBehavior
+{
+    public Action OnTrigger { get; set; }
+}
+
 public interface IHealth
 {
     public int health { get; }

@@ -10,6 +10,7 @@ public class Player : Entity
     private new void Awake()
     {
         base.Awake();
+
         _weapon = GetComponent<Weapon>();
     }
 
