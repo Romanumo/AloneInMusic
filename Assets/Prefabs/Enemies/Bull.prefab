@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 8
-  rotationSpeed: 4
+  rotationSpeed: 5
 --- !u!114 &4543087683447554740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 10
-  reloadTime: 5
+  reloadTime: 2
   attackableLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects: []
   onHealthChanged: {fileID: 5609888078638088843}
-  onDeath: {fileID: 0}
+  onDeath: {fileID: 776951648275832035, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
 --- !u!95 &4543087683447554746
 Animator:
   serializedVersion: 4

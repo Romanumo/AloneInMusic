@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0885bec7be9f64a43931ddc7c74df98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liveTime: 10
+  liveTime: 3
   collisionEffect: {fileID: 1554090992169100938, guid: a7c7a7a596ec118469dfcd62bc8aa049, type: 3}
 --- !u!114 &8691628387711670837
 MonoBehaviour:

@@ -15,7 +15,7 @@ public class TargetedWeapon : Weapon
         _targetStats.ModifyHealth(this.attack, this);
     }
 
-    public void Awake()
+    public void Start()
     {
         owner = GetComponent<ITargeted>();
         _targetStats = owner.target.GetComponent<IHealth>();

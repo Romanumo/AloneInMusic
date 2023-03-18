@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FXManager : MonoBehaviour
 {
-    [SerializeField] private BehaviourEffect[] effects;
+    [SerializeField] private BehaviourEffect[] behaviourEffects;
     [SerializeField] private ParticleSystem onHealthChanged;
     [SerializeField] private ParticleSystem onDeath;
 
@@ -13,7 +13,7 @@ public class FXManager : MonoBehaviour
     void Start()
     {
         owner = GetComponent<Entity>();
-        foreach (BehaviourEffect behaviourEffect in effects)
+        foreach (BehaviourEffect behaviourEffect in behaviourEffects)
         {
             behaviourEffect.behaviour.OnTrigger += () => PlayEffect(behaviourEffect.effect);
         }
@@ -32,7 +32,13 @@ public class FXManager : MonoBehaviour
 
     public static void CreateEffect(ParticleSystem effect, Transform effectTransfrom)
     {
-        GameObject effectObj = Instantiate(effect.gameObject, effectTransfrom);
+        GameObject effectObj = Instantiate(effect.gameObject, effectTransfrom.position, effectTransfrom.rotation);
+        TimerManager.manager.AddTimer(() => Destroy(effectObj), 5f);
+    }
+
+    public static void CreateEffect(ParticleSystem effect, Vector3 effectPos)
+    {
+        GameObject effectObj = Instantiate(effect.gameObject, effectPos, Quaternion.identity);
         TimerManager.manager.AddTimer(() => Destroy(effectObj), 5f);
     }
 }

@@ -30,7 +30,11 @@ public class ActiveEntity : Entity, IStateWatcher
         float distSqr = (transform.position - target.position).sqrMagnitude;
         RangedState state = GameManager.GetPrioritizedState(distSqr, _rangedStates);
         ChangeState(state.behaviour);
-        _animator.Play(state.animationName);
+
+        if(state.behaviour != null)
+            _animator.Play(state.animationName);
+        else
+            _animator.Play("Idle");
     }
 
     public override void Die()

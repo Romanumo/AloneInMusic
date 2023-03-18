@@ -22,7 +22,7 @@ public class Player : Entity
 
     public void UpdateHealthBar()
     {
-        _healthDisplayer.UpdateBar((float)((float)health / (float)maxHealth));
+        _healthDisplayer.UpdateBar((float)(health / (float)maxHealth));
     }
 
     public override void Die()
