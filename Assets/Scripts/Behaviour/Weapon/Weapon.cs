@@ -7,7 +7,13 @@ public abstract class Weapon : SingleTimeBehavior
 {
     [SerializeField] public int attack;
     [SerializeField] public float reloadTime;
+    protected Entity owner;
     bool isReloaded = true;
+
+    private void Awake()
+    {
+        owner = GetComponent<Entity>();
+    }
 
     public override void UpdateAction()
     {

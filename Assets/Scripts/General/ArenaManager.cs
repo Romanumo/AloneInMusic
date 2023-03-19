@@ -8,7 +8,9 @@ public class ArenaManager : MonoBehaviour
     [SerializeField] private ParticleSystem spawnEffect;
     [SerializeField] private float roundsInterval;
     [SerializeField] private float arenaSize;
+
     private List<Entity> enemiesInArena;
+    private bool hasStartedRound = false;
     private int currentRound;
 
     public static ArenaManager instance { get => _instance; }
@@ -25,19 +27,21 @@ public class ArenaManager : MonoBehaviour
 
     void Update()
     {
-        if (enemiesInArena.Count <= 0)
+        if (enemiesInArena.Count <= 0 && hasStartedRound)
             FinishTheRound();
     }
 
     private void FinishTheRound()
     {
         currentRound++;
+        hasStartedRound = false;
         StartCoroutine(StartNewRound());
     }
 
     IEnumerator StartNewRound()
     {
         yield return new WaitForSeconds(roundsInterval);
+        hasStartedRound = true;
 
         foreach (UnitSpawnInfo spawnInfo in unitRounds)
             spawnInfo.Spawn(currentRound, arenaSize);

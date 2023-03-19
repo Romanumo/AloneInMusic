@@ -8,10 +8,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] private ParticleSystem collisionEffect;
 
     private int attack;
-    private Weapon weapon;
+
+    private Entity sender;
     private Movement movement;
 
-    private void Start()
+    private void Awake()
     {
         movement = GetComponent<Movement>();
         StartCoroutine(Despawn());
@@ -22,10 +23,11 @@ public class Bullet : MonoBehaviour
         movement.UpdateAction();   
     }
 
-    public void AssignBullet(int attack, Weapon weapon)
+    public void AssignBullet(Entity sender, int attack, float bulletSpeed)
     {
         this.attack = attack;
-        this.weapon = weapon;
+        this.sender = sender;
+        movement.speed = bulletSpeed;
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -33,7 +35,7 @@ public class Bullet : MonoBehaviour
         IHealth health;
         if (collision.gameObject.TryGetComponent<IHealth>(out health))
         {
-            health.ModifyHealth(attack, weapon);
+            health.ModifyHealth(attack, sender);
         }
         FXManager.CreateEffect(collisionEffect, transform);
         Die();

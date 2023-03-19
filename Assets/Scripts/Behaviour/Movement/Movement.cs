@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class Movement : Behaviour
 {
-    [SerializeField] protected int _speed;
-    public int speed { get => _speed; }
+    [SerializeField] protected float _speed;
+    public float speed { get => _speed; set => _speed = value; }
 }

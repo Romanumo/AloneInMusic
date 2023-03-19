@@ -6,18 +6,14 @@ using UnityEngine;
 public class TargetedWeapon : Weapon
 {
     private IHealth _targetStats;
-    private ITargeted owner;
-
-    public ITargeted watcher => owner;
 
     public override void Attack()
     {
-        _targetStats.ModifyHealth(this.attack, this);
+        _targetStats.ModifyHealth(this.attack, owner);
     }
 
     public void Start()
     {
-        owner = GetComponent<ITargeted>();
-        _targetStats = owner.target.GetComponent<IHealth>();
+        _targetStats = ((ITargeted)owner).target.GetComponent<IHealth>();
     }
 }

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class CollisionWeapon : Weapon
 {
-    [SerializeField] LayerMask attackableLayer;
     private IHealth target;
 
     public override void Attack() 
     {
-        target.ModifyHealth(attack, this); 
+        target.ModifyHealth(attack, owner); 
     }
 
     private void OnCollisionEnter(Collision collision)

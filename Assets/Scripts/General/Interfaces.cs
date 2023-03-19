@@ -23,7 +23,7 @@ public interface IHealth
     public Action OnDeath { get; set; }
 
     public void Die();
-    public void ModifyHealth(int attack, Weapon sender);
+    public void ModifyHealth(int attack, Entity sender);
 }
 
 public interface ITargeted

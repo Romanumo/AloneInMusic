@@ -589,7 +589,7 @@ MonoBehaviour:
   _rangedStates:
   - _name: 
     _behaviour: {fileID: 4543087683447554741}
-    _range: 50
+    _range: 70
     _animationName: Run
   - _name: 
     _behaviour: {fileID: 4543087683447554740}
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fad75b0427d584e95dbfdd6ac65985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects: []
+  behaviourEffects: []
   onHealthChanged: {fileID: 5609888078638088843}
   onDeath: {fileID: 776951648275832035, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
 --- !u!95 &4543087683447554746
