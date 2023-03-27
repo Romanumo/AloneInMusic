@@ -14,15 +14,19 @@ public abstract class SingleTimeBehavior : Behaviour
     public Action OnTrigger { get => onTrigger; set => onTrigger = value; }
 }
 
-public interface IHealth
+public interface IWillDie
+{
+    public Action OnDeath { get; set; }
+    public void Die();
+}
+
+public interface IHealth : IWillDie
 {
     public int health { get; }
     public int maxHealth { get; }
 
     public Action OnHealthChanged { get; set; }
-    public Action OnDeath { get; set; }
 
-    public void Die();
     public void ModifyHealth(int attack, Entity sender);
 }
 

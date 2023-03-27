@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotgunWeapon : MonoBehaviour
+public class ShotgunWeapon : ThrowerWeapon
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int projectileAmount;
+    [SerializeField] private float bulletSpread;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Shoot(Vector3 shootPosition)
     {
-        
+        for (int i = 0; i < projectileAmount; i++)
+        {
+            Random.InitState(System.DateTime.UtcNow.Millisecond);
+            Vector3 shootAlteration = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.1f, 0.1f), Random.Range(0, 1f)) * bulletSpread;
+            /*shootDirection = transform.forward + shootAlteration;
+            base.Shoot(shootPosition + shootAlteration, shootDirection);*/
+        }
     }
 }

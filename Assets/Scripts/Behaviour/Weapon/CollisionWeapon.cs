@@ -8,7 +8,7 @@ public class CollisionWeapon : Weapon
 
     public override void Attack() 
     {
-        target.ModifyHealth(attack, owner); 
+        target.ModifyHealth(attack, _owner); 
     }
 
     private void OnCollisionEnter(Collision collision)

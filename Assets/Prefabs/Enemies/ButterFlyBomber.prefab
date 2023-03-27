@@ -754,6 +754,7 @@ GameObject:
   - component: {fileID: -7946175944098761197}
   - component: {fileID: 2674118052542022162}
   - component: {fileID: 140787162797984444}
+  - component: {fileID: 8132716911123563257}
   m_Layer: 0
   m_Name: ButterFlyBomber
   m_TagString: Untagged
@@ -890,8 +891,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0509173, y: 0.02542129, z: 0.08189826}
-  m_Center: {x: 0.0006186962, y: 0.0122494, z: 0.0118625825}
+  m_Size: {x: 0.08047571, y: 0.02542129, z: 0.08189826}
+  m_Center: {x: -0.0012228107, y: 0.0122494, z: 0.0118625825}
 --- !u!54 &2674118052542022175
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -953,11 +954,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851da3c0be4519a47b144bc365084cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 20
+  attack: 10
   reloadTime: 1
   bulletSpeed: 0
   lookAtTargetWhileShooting: 0
-  bullet: {fileID: 3632128605300701385, guid: 5e0e05c7d2462fd4ea5a7eb7d20af181, type: 3}
+  projectile: {fileID: 1873041810023399484, guid: 3eecda22022864c469176abdec40ef4c, type: 3}
   shootPoint: {fileID: 414121898}
 --- !u!114 &140787162797984444
 MonoBehaviour:
@@ -973,6 +974,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   sightRange: 15
+--- !u!114 &8132716911123563257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5449353487940195887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fad75b0427d584e95dbfdd6ac65985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviourEffects: []
+  onHealthChanged: {fileID: 0}
+  onDeath: {fileID: 1536198907717375761, guid: 1b069c19745494b4daf33ad134eb26df, type: 3}
 --- !u!1 &5699627575100955929
 GameObject:
   m_ObjectHideFlags: 0

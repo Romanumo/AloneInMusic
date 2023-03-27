@@ -42,8 +42,8 @@ public abstract class Entity : MonoBehaviour, IHealth
     }
 
     public void ChangeState(Behaviour state) => this.state = state;
-
     public abstract void Die();
+    public Entity() { }
 }
 
 [System.Serializable]

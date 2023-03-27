@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1418814689340126113}
   - component: {fileID: 1418814689340126114}
   - component: {fileID: 6091762556357457656}
-  - component: {fileID: 1418814689340126115}
+  - component: {fileID: 1793862054680264896}
   - component: {fileID: 1418814689340126116}
   - component: {fileID: 5276681254529211577}
   m_Layer: 0
@@ -181,9 +181,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviours:
-  - {fileID: 1418814689340126115}
+  - {fileID: 1793862054680264896}
   - {fileID: 1418814689340126116}
---- !u!114 &1418814689340126115
+--- !u!114 &1793862054680264896
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,10 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851da3c0be4519a47b144bc365084cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 4
+  attack: 2
   reloadTime: 0.5
   bulletSpeed: 30
-  bullet: {fileID: 8691628387711670826, guid: e938ab60fb446224c8d29368e31ad89c, type: 3}
+  lookAtTargetWhileShooting: 1
+  projectile: {fileID: 8691628387711670826, guid: e938ab60fb446224c8d29368e31ad89c, type: 3}
   shootPoint: {fileID: 6524077407338217576}
 --- !u!114 &1418814689340126116
 MonoBehaviour:
@@ -227,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviourEffects:
-  - behaviour: {fileID: 1418814689340126115}
+  - behaviour: {fileID: 1793862054680264896}
     effect: {fileID: 6057320274264027319}
   onHealthChanged: {fileID: 0}
   onDeath: {fileID: 0}
@@ -255,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6524077407338217577}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0011, y: -0.00769, z: 0.0329}
+  m_LocalPosition: {x: -0.0011, y: -0.00769, z: 0.0359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -14,7 +14,6 @@ public class Wander : Movement
         {
             Random.InitState(System.DateTime.UtcNow.Millisecond);
             angle = Random.Range(0, 360);
-            Debug.Log(hit.collider.gameObject);
         }
 
         this.transform.position += transform.forward * speed * Time.deltaTime;

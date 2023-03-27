@@ -9,11 +9,11 @@ public class TargetedWeapon : Weapon
 
     public override void Attack()
     {
-        _targetStats.ModifyHealth(this.attack, owner);
+        _targetStats.ModifyHealth(this.attack, _owner);
     }
 
     public void Start()
     {
-        _targetStats = ((ITargeted)owner).target.GetComponent<IHealth>();
+        _targetStats = ((ITargeted)_owner).target.GetComponent<IHealth>();
     }
 }

@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected float liveTime;
+
+    public int attack { get; protected set; }
+    public Entity sender { get; protected set; }
+
+    protected void Awake()
     {
-        
+        StartCoroutine(Despawn());
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void AssignBullet(Entity sender, int attack, float bulletSpeed)
     {
-        
+        this.attack = attack;
+        this.sender = sender;
+    }
+
+    IEnumerator Despawn()
+    {
+        yield return new WaitForSeconds(liveTime);
+        Die();
+    }
+
+    protected virtual void Die()
+    {
+        Destroy(this.gameObject);
     }
 }

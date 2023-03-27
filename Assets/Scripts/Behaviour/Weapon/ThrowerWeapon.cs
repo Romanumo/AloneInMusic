@@ -6,7 +6,7 @@ public class ThrowerWeapon : Weapon
 {
     [SerializeField] private float bulletSpeed;
     [SerializeField] private bool lookAtTargetWhileShooting = true;
-    [SerializeField] private Bullet bullet;
+    [SerializeField] private Projectile projectile;
     [SerializeField] private Transform shootPoint;
     private Transform shootTransform;
 
@@ -18,10 +18,15 @@ public class ThrowerWeapon : Weapon
     public override void Attack()
     {
         if(lookAtTargetWhileShooting)
-            transform.LookAt(((ITargeted)owner).target);
+            transform.LookAt(((ITargeted)_owner).target);
         Vector3 shootPosition = shootTransform.position + this.transform.forward * 1.5f;
 
-        Bullet bulletInstance = Instantiate<Bullet>(bullet, shootPosition, shootTransform.rotation);
-        bulletInstance.AssignBullet(owner, attack, bulletSpeed);
+        Shoot(shootPosition);
+    }
+
+    protected virtual void Shoot(Vector3 shootPosition)
+    {
+        Projectile projectileInstance = Instantiate<Projectile>(projectile, shootPosition, shootPoint.rotation);
+        projectileInstance.AssignBullet(_owner, attack, bulletSpeed);
     }
 }

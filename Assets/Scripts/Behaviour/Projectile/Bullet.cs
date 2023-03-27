@@ -2,20 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Projectile
 {
-    [SerializeField] private float liveTime;
     [SerializeField] private ParticleSystem collisionEffect;
-
-    private int attack;
-
-    private Entity sender;
     private Movement movement;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         movement = GetComponent<Movement>();
-        StartCoroutine(Despawn());
     }
 
     void Update()
@@ -23,32 +18,19 @@ public class Bullet : MonoBehaviour
         movement.UpdateAction();   
     }
 
-    public void AssignBullet(Entity sender, int attack, float bulletSpeed)
+    public override void AssignBullet(Entity sender, int attack, float bulletSpeed)
     {
-        this.attack = attack;
-        this.sender = sender;
+        base.AssignBullet(sender, attack, bulletSpeed);
         movement.speed = bulletSpeed;
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         IHealth health;
-        if (collision.gameObject.TryGetComponent<IHealth>(out health))
-        {
+        if (collision.gameObject.TryGetComponent(out health))
             health.ModifyHealth(attack, sender);
-        }
+
         FXManager.CreateEffect(collisionEffect, transform);
         Die();
-    }
-
-    IEnumerator Despawn()
-    {
-        yield return new WaitForSeconds(liveTime);
-        Die();
-    }
-
-    private void Die()
-    {
-        Destroy(this.gameObject);
     }
 }
