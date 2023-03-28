@@ -415,7 +415,7 @@ MonoBehaviour:
   _rangedStates:
   - _name: 
     _behaviour: {fileID: 6354253016117208047}
-    _range: 50
+    _range: 75
     _animationName: Run
   - _name: 
     _behaviour: {fileID: 6354253016117208032}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc267889fb908494cb027845f6ac69bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liveTime: 20
+  liveTime: 999
 --- !u!114 &3113577615095062005
 MonoBehaviour:
   m_ObjectHideFlags: 0

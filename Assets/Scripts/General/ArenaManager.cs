@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArenaManager : MonoBehaviour
 {
-    [SerializeField] private UnitSpawnInfo[] unitRounds;
+    [SerializeField] private RoundInfo[] unitRounds;
     [SerializeField] private ParticleSystem spawnEffect;
     [SerializeField] private float roundsInterval;
     [SerializeField] private float arenaSize;
@@ -43,14 +43,14 @@ public class ArenaManager : MonoBehaviour
         yield return new WaitForSeconds(roundsInterval);
         hasStartedRound = true;
 
-        foreach (UnitSpawnInfo spawnInfo in unitRounds)
-            spawnInfo.Spawn(currentRound, arenaSize);
+        unitRounds[currentRound].Spawn(arenaSize);
     }
 
     public void SpawnArenaEnemy(ActiveEntity enemy, Vector3 pos)
     {
         ActiveEntity enemyObj = Instantiate<ActiveEntity>(enemy, pos, Quaternion.identity);
         FXManager.CreateEffect(spawnEffect, pos);
+        enemyObj.transform.parent = transform;
 
         Subscribe(enemyObj);
         enemyObj.OnDeath += () => Unsubscribe(enemyObj);
@@ -62,6 +62,39 @@ public class ArenaManager : MonoBehaviour
 }
 
 [System.Serializable]
+public class RoundInfo
+{
+    public RoundUnitTypeInfo[] enemiesInfo;
+
+    public void Spawn(float arenaSize)
+    {
+        foreach (RoundUnitTypeInfo enemyInfo in enemiesInfo)
+        {
+            enemyInfo.Spawn(arenaSize);
+        }
+    }
+}
+
+[System.Serializable]
+public class RoundUnitTypeInfo
+{
+    public ActiveEntity enemy;
+    public int amount;
+
+    public void Spawn(float arenaSize)
+    {
+        for (int i = 0; i < amount;i++)
+        {
+            Random.InitState(System.DateTime.UtcNow.Millisecond);
+            float xPos = Random.Range(-arenaSize, arenaSize);
+            float zPos = Random.Range(-arenaSize, arenaSize);
+
+            ArenaManager.instance.SpawnArenaEnemy(enemy, new Vector3(xPos, 10, zPos));
+        }
+    }
+}
+
+/*[System.Serializable]
 public class UnitSpawnInfo
 {
     public ActiveEntity enemy;
@@ -87,4 +120,4 @@ public class UnitSpawnInfo
             ArenaManager.instance.SpawnArenaEnemy(enemy, new Vector3(xPos, 10, zPos));
         }
     }
-}
+}*/

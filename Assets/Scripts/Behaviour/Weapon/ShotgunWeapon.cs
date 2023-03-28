@@ -14,7 +14,7 @@ public class ShotgunWeapon : ThrowerWeapon
             Random.InitState(System.DateTime.UtcNow.Millisecond);
             Vector3 shootAlteration = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.1f, 0.1f), Random.Range(0, 1f)) * bulletSpread;
             /*shootDirection = transform.forward + shootAlteration;
-            base.Shoot(shootPosition + shootAlteration, shootDirection);*/
+            base.Shoot(shootPosition + shootAlteration);*/
         }
     }
 }

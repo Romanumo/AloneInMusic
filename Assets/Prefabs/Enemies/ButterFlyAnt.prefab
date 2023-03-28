@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 7546229762548364266}
   - component: {fileID: 6637308439048210411}
   - component: {fileID: 8715654697753743173}
+  - component: {fileID: 4469305690767937601}
   m_Layer: 0
   m_Name: ButterFlyAnt
   m_TagString: Untagged
@@ -681,6 +682,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   sightRange: 15
+--- !u!114 &4469305690767937601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647892370175284182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fad75b0427d584e95dbfdd6ac65985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviourEffects: []
+  onHealthChanged: {fileID: 0}
+  onDeath: {fileID: 3588926714822940032, guid: 722ab214ee806904c8aa851b4ebcd330, type: 3}
 --- !u!1 &3898201912930474208
 GameObject:
   m_ObjectHideFlags: 0

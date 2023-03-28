@@ -13,9 +13,10 @@ public class CollisionWeapon : Weapon
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        IHealth health;
+        if (collision.gameObject.TryGetComponent(out health))
         {
-            target = collision.gameObject.GetComponent<IHealth>();
+            target = health;
             UpdateAction();
         }
     }

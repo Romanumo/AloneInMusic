@@ -162,7 +162,7 @@ MonoBehaviour:
   _rangedStates:
   - _name: 
     _behaviour: {fileID: 1418814689340126116}
-    _range: 80
+    _range: 100
     _animationName: Idle
   - _name: 
     _behaviour: {fileID: 6091762556357457656}
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851da3c0be4519a47b144bc365084cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 2
+  attack: 1
   reloadTime: 0.5
   bulletSpeed: 30
   lookAtTargetWhileShooting: 1
