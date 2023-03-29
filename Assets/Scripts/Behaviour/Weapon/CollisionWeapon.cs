@@ -18,6 +18,9 @@ public class CollisionWeapon : Weapon
         {
             target = health;
             UpdateAction();
+            CollisionTrigger(collision.gameObject);
         }
     }
+
+    protected virtual void CollisionTrigger(GameObject target) { }
 }

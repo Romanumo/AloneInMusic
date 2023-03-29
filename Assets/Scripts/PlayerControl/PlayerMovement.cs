@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     Transform cameraPos;
     AudioSource audioSource;
+    Vector3 knockBack;
 
     //Slope Variables
     Vector3 slopeTangent;
