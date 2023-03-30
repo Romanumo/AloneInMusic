@@ -1,2 +1,2 @@
 # AloneInMusic
-OOP principles project example
+Short game, showcase of OOP (SOLID, SRY) principles
