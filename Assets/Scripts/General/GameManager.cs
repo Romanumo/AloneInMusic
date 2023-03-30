@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum GameState { Player, Win, Loss }
 public class GameManager : MonoBehaviour
@@ -8,11 +11,15 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
 
     [SerializeField] private AudioSource audioObj;
+    [SerializeField] private RawImage blackScreen;
+    private GameState state;
 
     public void Awake()
     {
         if (instance == null)
             instance = this;
+
+        BlackScreen(2f, null, true);
     }
 
     public void ChangeGameState(GameState state)
@@ -20,12 +27,14 @@ public class GameManager : MonoBehaviour
         switch (state)
         {
             case GameState.Loss:
-                Debug.Log("Game Over!");
+                if(this.state != state)
+                    BlackScreen(2f, () => SceneManager.LoadScene(0));
                 break;
             case GameState.Win:
                 Debug.Log("Win!");
                 break;
         }
+        this.state = state;
     }
 
     public static RangedState GetPrioritizedState(float distanceSqr, List<RangedState> states)
@@ -39,6 +48,28 @@ public class GameManager : MonoBehaviour
                 lastRangedState = state;
         }
         return lastRangedState;
+    }
+
+    public static void BlackScreen(float time, Action postBlack, bool isInverted = false)
+    {
+        Action<float> update = (isInverted) ? BlackScreenFadeOut : BlackScreenFadeIn;
+        TimerManager.manager.AddProgressiveTimer(postBlack, update, time);
+    }
+
+    private static void BlackScreenFadeIn(float percentage)
+    {
+        Color color = GameManager.instance.blackScreen.color;
+        color.a = 1 - percentage;
+
+        GameManager.instance.blackScreen.color = color;
+    }
+
+    private static void BlackScreenFadeOut(float percentage)
+    {
+        Color color = GameManager.instance.blackScreen.color;
+        color.a = percentage;
+
+        GameManager.instance.blackScreen.color = color;
     }
 
     public static void CreateEffect(ParticleSystem effect, Transform effectTransfrom)

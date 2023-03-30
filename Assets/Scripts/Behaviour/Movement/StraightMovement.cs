@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Straight : Movement
+public class StraightMovement : Movement
 {
     public override void UpdateAction()
     {

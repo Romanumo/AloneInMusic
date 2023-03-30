@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d945ddac22ce237459eb431a6b5120d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 13
   rotationSpeed: 5
   isYRotationAllowed: 0
 --- !u!114 &4543087683447554740
@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 10
-  reloadTime: 1
+  reloadTime: 0.3
   deathOnCollision: 0
   knockBack: 50
 --- !u!114 &4543087683447554744
@@ -594,7 +594,7 @@ MonoBehaviour:
     _animationName: Run
   - _name: 
     _behaviour: {fileID: 4543087683447554740}
-    _range: 20
+    _range: 30
     _animationName: Straight
 --- !u!114 &7942768468148255020
 MonoBehaviour:

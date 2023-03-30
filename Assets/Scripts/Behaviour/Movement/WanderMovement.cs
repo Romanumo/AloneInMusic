@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wander : Movement
+public class WanderMovement : Movement
 {
     [SerializeField] private float sightRange;
     private float angle = 0;
