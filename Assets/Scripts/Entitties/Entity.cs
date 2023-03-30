@@ -33,7 +33,7 @@ public abstract class Entity : MonoBehaviour, IHealth
         state?.UpdateAction();
     }
 
-    public void ModifyHealth(int attack, Entity sender)
+    public void ModifyHealth(int attack)
     {
         _health -= attack;
         onHealthChanged?.Invoke();

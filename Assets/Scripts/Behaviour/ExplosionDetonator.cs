@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosionDetonator : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem explosionEffect;
+    //[SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private Projectile projectileStats;
     [SerializeField] private float explosionRadius;
     private IWillDie detonator;
@@ -17,13 +17,13 @@ public class ExplosionDetonator : MonoBehaviour
 
     private void Explosion()
     {
-        FXManager.CreateEffect(explosionEffect, transform.position);
+        //GameManager.CreateEffect(explosionEffect, transform.position);
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider hitCollider in hitColliders)
         {
             IHealth health;
             hitCollider.gameObject.TryGetComponent(out health);
-            health?.ModifyHealth(projectileStats.attack, projectileStats.sender);
+            health?.ModifyHealth(projectileStats.attack);
         }
     }
 }

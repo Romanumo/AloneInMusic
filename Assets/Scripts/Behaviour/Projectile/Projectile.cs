@@ -6,9 +6,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour, IWillDie
 {
     [SerializeField] protected float liveTime;
-
+    protected float bulletSpeed;
     public int attack { get; protected set; }
-    public Entity sender { get; protected set; }
 
     public Action OnDeath { get => onDeath; set => onDeath = value; }
     private Action onDeath;
@@ -18,10 +17,10 @@ public class Projectile : MonoBehaviour, IWillDie
         StartCoroutine(Despawn());
     }
 
-    public virtual void AssignBullet(Entity sender, int attack, float bulletSpeed)
+    public virtual void AssignBullet(int attack, float bulletSpeed)
     {
         this.attack = attack;
-        this.sender = sender;
+        this.bulletSpeed = bulletSpeed;
     }
 
     IEnumerator Despawn()
@@ -32,6 +31,7 @@ public class Projectile : MonoBehaviour, IWillDie
 
     public virtual void Die()
     {
+        onDeath?.Invoke();
         Destroy(this.gameObject);
     }
 }

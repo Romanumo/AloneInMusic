@@ -6,10 +6,8 @@ public enum GameState { Player, Win, Loss }
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
-    public Entity enemiesTarget { get => _enemiesTarget; }
 
-    [SerializeField] private Entity _enemiesTarget;
-    private GameState state;
+    [SerializeField] private AudioSource audioObj;
 
     public void Awake()
     {
@@ -19,7 +17,6 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGameState(GameState state)
     {
-        this.state = state;
         switch (state)
         {
             case GameState.Loss:
@@ -42,5 +39,34 @@ public class GameManager : MonoBehaviour
                 lastRangedState = state;
         }
         return lastRangedState;
+    }
+
+    public static void CreateEffect(ParticleSystem effect, Transform effectTransfrom)
+    {
+        if (effect == null)
+            return;
+
+        GameObject effectObj = Instantiate(effect.gameObject, effectTransfrom.position, effectTransfrom.rotation);
+        TimerManager.manager.AddTimer(() => Destroy(effectObj), 5f);
+    }
+
+    public static void CreateEffect(ParticleSystem effect, Vector3 effectPos)
+    {
+        if (effect == null)
+            return;
+
+        GameObject effectObj = Instantiate(effect.gameObject, effectPos, Quaternion.identity);
+        TimerManager.manager.AddTimer(() => Destroy(effectObj), 5f);
+    }
+
+    public static void CreateAudio(AudioClip sound, Vector3 effectPos)
+    {
+        if (sound == null)
+            return;
+
+        AudioSource audio = Instantiate<AudioSource>(instance.audioObj, effectPos, Quaternion.identity);
+        audio.clip = sound;
+        audio.Play();
+        TimerManager.manager.AddTimer(() => Destroy(audio.gameObject), 3f);
     }
 }

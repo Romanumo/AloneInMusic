@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: -7946175944098761197}
   - component: {fileID: 2674118052542022162}
   - component: {fileID: 140787162797984444}
-  - component: {fileID: 8132716911123563257}
+  - component: {fileID: 5166517192198919835}
   m_Layer: 0
   m_Name: ButterFlyBomber
   m_TagString: Untagged
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d51c49899726f48b1cbc5dd06ae65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 20
+  _health: 10
   _rangedStates:
   - _name: 
     _behaviour: {fileID: -7946175944098761197}
@@ -1052,10 +1052,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 10
-  reloadTime: 1
+  reloadTime: 3
   bulletSpeed: 0
   lookAtTargetWhileShooting: 0
-  projectile: {fileID: 1873041810023399484, guid: 3eecda22022864c469176abdec40ef4c, type: 3}
+  projectile: {fileID: 8366000360225507908, guid: 3eecda22022864c469176abdec40ef4c, type: 3}
   shootPoint: {fileID: 414121898}
 --- !u!114 &140787162797984444
 MonoBehaviour:
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 20
   sightRange: 15
---- !u!114 &8132716911123563257
+--- !u!114 &5166517192198919835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1080,20 +1080,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5449353487940195887}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88fad75b0427d584e95dbfdd6ac65985, type: 3}
+  m_Script: {fileID: 11500000, guid: f534c0e9257abb34fa7bd8d720583bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  onDeath:
+    particle: {fileID: 1536198907717375761, guid: 1b069c19745494b4daf33ad134eb26df, type: 3}
+    audio: {fileID: 8300000, guid: f9a082819c69ec54a863ee5b94274d76, type: 3}
+  onHealthChanged:
+    particle: {fileID: 0}
+    audio: {fileID: 0}
   behaviourEffects:
   - particle: {fileID: 0}
     audio: {fileID: 8300000, guid: 7a1fbd7d08351c643b9930ff26b73deb, type: 3}
     behaviour: {fileID: 2674118052542022162}
-  onHealthChanged:
-    particle: {fileID: 0}
-    audio: {fileID: 8300000, guid: 8ee51d8c97a760b41bd9f51a51516c51, type: 3}
-  onDeath:
-    particle: {fileID: 1536198907717375761, guid: 1b069c19745494b4daf33ad134eb26df, type: 3}
-    audio: {fileID: 0}
-  audioSource: {fileID: 0}
 --- !u!1 &5699627575100955929
 GameObject:
   m_ObjectHideFlags: 0

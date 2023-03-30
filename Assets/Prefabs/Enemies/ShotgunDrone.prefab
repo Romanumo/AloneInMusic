@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6091762556357457656}
   - component: {fileID: 1793862054680264896}
   - component: {fileID: 1418814689340126116}
-  - component: {fileID: 5276681254529211577}
+  - component: {fileID: 8495775498192267732}
   - component: {fileID: 1155838553}
   m_Layer: 0
   m_Name: ShotgunDrone
@@ -44,6 +44,7 @@ Transform:
   - {fileID: 6701519698516662181}
   - {fileID: 6701519698378931876}
   - {fileID: 6701519698636202185}
+  - {fileID: 9061176065181230799}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -217,7 +218,7 @@ MonoBehaviour:
   _speed: 10
   rotationSpeed: 10
   isYRotationAllowed: 1
---- !u!114 &5276681254529211577
+--- !u!114 &8495775498192267732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,20 +227,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5925199453775875026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88fad75b0427d584e95dbfdd6ac65985, type: 3}
+  m_Script: {fileID: 11500000, guid: f534c0e9257abb34fa7bd8d720583bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  onDeath:
+    particle: {fileID: 1207157463145328085, guid: 7aa079d9de3f06b48861a922cc66922e, type: 3}
+    audio: {fileID: 8300000, guid: 74f4f8d8e5d71b7488cc153f1c29f55b, type: 3}
+  onHealthChanged:
+    particle: {fileID: 9149571232674629702}
+    audio: {fileID: 8300000, guid: 6f78dbec78aef96419c0569cf0c330f4, type: 3}
   behaviourEffects:
-  - particle: {fileID: 1046455139247674457, guid: d3782a175fee8fd47be1add443dd1d27, type: 3}
+  - particle: {fileID: 6057320274264027319}
     audio: {fileID: 8300000, guid: ad80863b2274f314b85995ddd2c0f697, type: 3}
     behaviour: {fileID: 1793862054680264896}
-  onHealthChanged:
-    particle: {fileID: 0}
-    audio: {fileID: 0}
-  onDeath:
-    particle: {fileID: 776951648275832035, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
-    audio: {fileID: 0}
-  audioSource: {fileID: 0}
 --- !u!82 &1155838553
 AudioSource:
   m_ObjectHideFlags: 0
@@ -697,8 +698,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3782a175fee8fd47be1add443dd1d27, type: 3}
+--- !u!198 &6057320274264027319 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1046455139247674457, guid: d3782a175fee8fd47be1add443dd1d27, type: 3}
+  m_PrefabInstance: {fileID: 6524077406917633262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6289806442657816126 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 991861156151769808, guid: d3782a175fee8fd47be1add443dd1d27, type: 3}
   m_PrefabInstance: {fileID: 6524077406917633262}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8372622608894973093
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7660048891926283576}
+    m_Modifications:
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.4838096
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.87517333
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -122.131
+      objectReference: {fileID: 0}
+    - target: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2806986293229167293, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+      propertyPath: m_Name
+      value: ScrapFall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+--- !u!4 &9061176065181230799 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 688563077870842474, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+  m_PrefabInstance: {fileID: 8372622608894973093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &9149571232674629702 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 776951648275832035, guid: a6d0812b88d8a724692250bc3714d0eb, type: 3}
+  m_PrefabInstance: {fileID: 8372622608894973093}
   m_PrefabAsset: {fileID: 0}

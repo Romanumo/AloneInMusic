@@ -20,21 +20,22 @@ public class Bullet : Projectile
         movement.UpdateAction();   
     }
 
-    public override void AssignBullet(Entity sender, int attack, float bulletSpeed)
+    public override void AssignBullet(int attack, float bulletSpeed)
     {
-        base.AssignBullet(sender, attack, bulletSpeed);
-        movement.speed = bulletSpeed;
+        base.AssignBullet(attack, bulletSpeed);
+        movement.speed = this.bulletSpeed;
         weapon.attack = attack;
     }
 
-    public void OnCollisionEnter(Collision collision)
+    /*public void OnCollisionEnter(Collision collision)
     {
-        /*IHealth health;
-        if (collision.gameObject.TryGetComponent(out health))
-            health.ModifyHealth(attack, sender);*/
+        //IHealth health;
+        //if (collision.gameObject.TryGetComponent(out health))
+        //    health.ModifyHealth(attack, sender)
 
         //FXManager.CreateEffect(collisionEffect, transform);
-        weapon.Attack();
+
+        //!! FIND SOLUTION TO COLLISION INTERCHANGEMENT
         Die();
-    }
+    }*/
 }

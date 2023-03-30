@@ -27,7 +27,7 @@ public interface IHealth : IWillDie
 
     public Action OnHealthChanged { get; set; }
 
-    public void ModifyHealth(int attack, Entity sender);
+    public void ModifyHealth(int attack);
 }
 
 public interface ITargeted

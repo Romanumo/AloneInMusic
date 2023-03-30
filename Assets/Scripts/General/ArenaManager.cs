@@ -49,7 +49,7 @@ public class ArenaManager : MonoBehaviour
     public void SpawnArenaEnemy(ActiveEntity enemy, Vector3 pos)
     {
         ActiveEntity enemyObj = Instantiate<ActiveEntity>(enemy, pos, Quaternion.identity);
-        FXManager.CreateEffect(spawnEffect, pos);
+        GameManager.CreateEffect(spawnEffect, pos);
         enemyObj.transform.parent = transform;
 
         Subscribe(enemyObj);

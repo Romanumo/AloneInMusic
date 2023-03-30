@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class CollisionWeapon : Weapon
 {
+    [SerializeField] private bool deathOnCollision;
     private IHealth target;
+    private IWillDie owner;
+
+    public void Start()
+    {
+        if(deathOnCollision)
+            owner = GetComponent<IWillDie>();
+    }
 
     public override void Attack() 
     {
-        target.ModifyHealth(attack, _owner); 
+        target.ModifyHealth(attack); 
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -20,6 +28,9 @@ public class CollisionWeapon : Weapon
             UpdateAction();
             CollisionTrigger(collision.gameObject);
         }
+
+        if (deathOnCollision)
+            owner.Die();
     }
 
     protected virtual void CollisionTrigger(GameObject target) { }

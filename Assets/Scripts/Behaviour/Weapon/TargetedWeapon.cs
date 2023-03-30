@@ -7,13 +7,13 @@ public class TargetedWeapon : Weapon
 {
     private IHealth _targetStats;
 
-    public override void Attack()
-    {
-        _targetStats.ModifyHealth(this.attack, _owner);
-    }
-
     public void Start()
     {
-        _targetStats = ((ITargeted)_owner).target.GetComponent<IHealth>();
+        _targetStats = GetComponent<ITargeted>().target.GetComponent<IHealth>();
+    }
+
+    public override void Attack()
+    {
+        _targetStats.ModifyHealth(this.attack);
     }
 }
