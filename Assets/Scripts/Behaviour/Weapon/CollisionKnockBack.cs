@@ -8,9 +8,11 @@ public class CollisionKnockBack : CollisionWeapon
 
     protected override void CollisionTrigger(GameObject target)
     {
-        Vector3 direction = (target.transform.position - transform.position).normalized;
-        Rigidbody rb = target.GetComponent<Rigidbody>();
-        rb.velocity = 1000f * knockBack * direction;
-        Debug.Log(target.name);
+        Vector3 direction = (target.transform.position - transform.position + new Vector3(0, 3, 0)).normalized;
+        Rigidbody rb;
+        if (target.TryGetComponent(out rb))
+            rb.velocity = knockBack * direction;
+        else
+            target.GetComponent<Player>().Knockback(knockBack * direction);
     }
 }

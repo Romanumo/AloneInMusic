@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : Entity
 {
     [SerializeField] private BarDisplayer _healthDisplayer;
+    private PlayerMovement movement;
     Weapon _weapon;
 
     private new void Awake()
     {
         base.Awake();
+        movement = GetComponent<PlayerMovement>();
         _weapon = GetComponent<Weapon>();
         onHealthChanged += UpdateHealthBar;
     }
@@ -18,6 +20,11 @@ public class Player : Entity
     {
         if (Input.GetMouseButtonUp(0))
             _weapon?.UpdateAction();
+    }
+
+    public void Knockback(Vector3 knockBack)
+    {
+        movement.ReceiveKnockBack(knockBack);
     }
 
     public void UpdateHealthBar()

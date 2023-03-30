@@ -16,7 +16,7 @@ public class Wander : Movement
             angle = Random.Range(0, 360);
         }
 
-        this.transform.position += transform.forward * speed * Time.deltaTime;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, angle, 0), 100f * Time.deltaTime);
+        rigidBody.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, angle, 0), Time.deltaTime * 20f);
+        rigidBody.velocity = transform.forward * speed;
     }
 }

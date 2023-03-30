@@ -11,7 +11,7 @@ public class ArenaManager : MonoBehaviour
 
     private List<Entity> enemiesInArena;
     private bool hasStartedRound = false;
-    private int currentRound;
+    private int currentRound = -1;
 
     public static ArenaManager instance { get => _instance; }
     private static ArenaManager _instance;
@@ -89,7 +89,7 @@ public class RoundUnitTypeInfo
             float xPos = Random.Range(-arenaSize, arenaSize);
             float zPos = Random.Range(-arenaSize, arenaSize);
 
-            ArenaManager.instance.SpawnArenaEnemy(enemy, new Vector3(xPos, 10, zPos));
+            ArenaManager.instance.SpawnArenaEnemy(enemy, new Vector3(xPos, -5, zPos));
         }
     }
 }

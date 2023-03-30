@@ -88,6 +88,9 @@ public class PlayerMovement : MonoBehaviour
         else if (isOnSlope)
             GForce += GForceVal * slopeTangent * slopeAngle * Time.deltaTime * -1 * (1f - friction);
 
+        knockBack = Vector3.Lerp(knockBack, Vector3.zero, Time.deltaTime);
+        charController.Move(knockBack * Time.deltaTime);
+
         charController.Move(GForce * Time.deltaTime);
     }
 
@@ -176,5 +179,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         slopeNormal = Vector3.up;
+    }
+
+    public void ReceiveKnockBack(Vector3 knockBack)
+    {
+        this.knockBack = knockBack;
+        GForce = new Vector3(0, -2f, 0);
     }
 }

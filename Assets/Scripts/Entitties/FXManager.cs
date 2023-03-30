@@ -5,31 +5,52 @@ using UnityEngine;
 public class FXManager : MonoBehaviour
 {
     [SerializeField] private BehaviourEffect[] behaviourEffects;
-    [SerializeField] private ParticleSystem onHealthChanged;
-    [SerializeField] private ParticleSystem onDeath;
+    [SerializeField] private FXEffect onHealthChanged;
+    [SerializeField] private FXEffect onDeath;
+    [SerializeField] private AudioSource audioSource;
 
     private Entity owner;
 
     void Start()
     {
         owner = GetComponent<Entity>();
+        if(audioSource == null)
+            audioSource = GetComponent<AudioSource>();
         foreach (BehaviourEffect behaviourEffect in behaviourEffects)
         {
-            behaviourEffect.behaviour.OnTrigger += () => PlayEffect(behaviourEffect.effect);
+            behaviourEffect.behaviour.OnTrigger += () => PlayEffect(behaviourEffect);
         }
 
-        if (onDeath != null)
-            owner.OnDeath += () => CreateEffect(onDeath, transform);
+        if (!onDeath.IsNull())
+            owner.OnDeath += () => PlayEffect(onDeath, transform);
 
-        if (onHealthChanged != null)
+        if (!onHealthChanged.IsNull())
             owner.OnHealthChanged += () => PlayEffect(onHealthChanged);
     }
 
-    private void PlayEffect(ParticleSystem particle)
+    private void PlayEffect(FXEffect effect, Transform transform)
     {
-        particle.Play();
+        CreateEffect(onDeath.particle, transform);
+        PlaySound(effect);
     }
 
+    private void PlayEffect(FXEffect effect)
+    {
+        if(effect.particle != null)
+            effect.particle.Play();
+        PlaySound(effect);
+    }
+
+    private void PlaySound(FXEffect effect)
+    {
+        if (effect.audio == null)
+            return;
+
+        audioSource.clip = effect.audio;
+        audioSource.Play();
+    }
+
+    #region StaticVoid
     public static void CreateEffect(ParticleSystem effect, Transform effectTransfrom)
     {
         GameObject effectObj = Instantiate(effect.gameObject, effectTransfrom.position, effectTransfrom.rotation);
@@ -40,13 +61,27 @@ public class FXManager : MonoBehaviour
     {
         GameObject effectObj = Instantiate(effect.gameObject, effectPos, Quaternion.identity);
         TimerManager.manager.AddTimer(() => Destroy(effectObj), 5f);
+    } 
+    #endregion
+}
+
+[System.Serializable]
+public class FXEffect
+{
+    public ParticleSystem particle;
+    public AudioClip audio;
+
+    public bool IsNull()
+    {
+        if (particle == null && audio == null)
+            return true;
+        return false;
     }
 }
 
 [System.Serializable]
-public class BehaviourEffect
+public class BehaviourEffect : FXEffect
 {
     public SingleTimeBehavior behaviour;
-    public ParticleSystem effect;
     //Maybe add sound here later
 }
