@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1873041810023399483}
   - component: {fileID: 1873041810023399482}
   - component: {fileID: 1873041810023399485}
-  - component: {fileID: 1873041810023399484}
+  - component: {fileID: 8366000360225507908}
   - component: {fileID: -6488143897603570388}
   - component: {fileID: 86881266084958655}
   m_Layer: 0
@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 1536198907717375761, guid: 1b069c19745494b4daf33ad134eb26df, type: 3}
-  projectileStats: {fileID: 1873041810023399484}
+  projectileStats: {fileID: 8366000360225507908}
   explosionRadius: 10
---- !u!114 &1873041810023399484
+--- !u!114 &8366000360225507908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1530951520100253039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc267889fb908494cb027845f6ac69bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ee1616582ddfff44a656722b6db0d26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   liveTime: 5

@@ -1,13 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IWillDie
 {
     [SerializeField] protected float liveTime;
 
     public int attack { get; protected set; }
     public Entity sender { get; protected set; }
+
+    public Action OnDeath { get => onDeath; set => onDeath = value; }
+    private Action onDeath;
 
     protected void Awake()
     {
@@ -26,7 +30,7 @@ public abstract class Projectile : MonoBehaviour
         Die();
     }
 
-    protected virtual void Die()
+    public virtual void Die()
     {
         Destroy(this.gameObject);
     }

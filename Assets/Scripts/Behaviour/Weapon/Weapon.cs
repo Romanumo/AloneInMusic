@@ -28,12 +28,12 @@ public abstract class Weapon : SingleTimeBehavior
         }
     }
 
-    public abstract void Attack();
-
     public IEnumerator Reload()
     {
         yield return new WaitForSeconds(reloadTime);
         isReloaded = true;
         yield return null;
     }
+
+    public abstract void Attack();
 }
