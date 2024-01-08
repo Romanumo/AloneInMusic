@@ -23,6 +23,8 @@ This is the first state. This behaviour is associated with seeker movement, mean
 
 ![image](https://github.com/Romanumo/AloneInMusic/assets/79278079/1095d243-d022-442c-a405-2f1dfa68818d)
 
-This is the second state. This behaviour is associated with targeted attack, meaning it will have an instant, non projectile based attack
+ This is the second state. This behaviour is associated with targeted attack, meaning it will have an instant, non projectile based attack
 
 Put together it will look like this
+https://github.com/Romanumo/AloneInMusic/assets/79278079/b6e25c3e-93c4-4709-9d8b-b65b09db8f3c
+
