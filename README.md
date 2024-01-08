@@ -18,9 +18,11 @@ Due to principles of OOP, behaviour building for enemies is very flexible and ea
 As you see in the example above, this entity has 2 states (Technically 3 if we include idle state, which most of the time is default), for each state we assign behaviour script, range of state activation and animation name associated with that state. In this case there are 2 behaviours
 
 ![image](https://github.com/Romanumo/AloneInMusic/assets/79278079/d82e6183-908d-4dc2-b028-5f60cf10939a)
+
 This is the first state. This behaviour is associated with seeker movement, meaning entity will move toward the player if activated
 
 ![image](https://github.com/Romanumo/AloneInMusic/assets/79278079/1095d243-d022-442c-a405-2f1dfa68818d)
+
 This is the second state. This behaviour is associated with targeted attack, meaning it will have an instant, non projectile based attack
 
 Put together it will look like this
