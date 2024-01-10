@@ -1,5 +1,5 @@
 # AloneInMusic
-Short game, showcase of OOP (SOLID, DRY) principles
+Short game, showcase of OOP (SOLID, DRY) principles, through easy-to-use behaviour system.
 This game encapsulates efficient way of structuring and keeping the code clean, reusable and intuitive
 
 ### About The Game
