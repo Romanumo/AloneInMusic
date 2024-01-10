@@ -4004,7 +4004,7 @@ MonoBehaviour:
   _rangedStates:
   - _name: 
     _behaviour: {fileID: 8054166030364909198}
-    _range: 100
+    _range: 50
     _animationName: Run
   - _name: 
     _behaviour: {fileID: 8054166030364909197}
