@@ -3,11 +3,9 @@ Short game, showcase of OOP (SOLID, DRY) principles, through easy-to-use behavio
 This game encapsulates efficient way of structuring and keeping the code clean, reusable and intuitive
 
 ### About The Game
-In this game you are in a test chamber, filled with several obstacles and surrounded with walls from all sides
+Periodically higher ups are going to send waves of evil entites, each with different abilities and behaviour. In this game you are in a test chamber, filled with several obstacles and surrounded with walls from all sides
 
 ![image](https://github.com/Romanumo/AloneInMusic/assets/79278079/46b9279a-50a1-4009-b44f-e4d2743ed5f9)
-
-Periodically higher ups are going to send waves of evil entites, each with different abilities and behaviour
 
 ### Behaviour OOP System
 Due to principles of OOP, behaviour building for enemies is very flexible and easy
