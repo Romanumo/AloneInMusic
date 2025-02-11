@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour, IWillDie
+public class Projectile : MonoBehaviour, IKillable
 {
     [SerializeField] protected float liveTime;
     protected float bulletSpeed;

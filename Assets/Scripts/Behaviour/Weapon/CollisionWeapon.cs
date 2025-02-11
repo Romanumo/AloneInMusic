@@ -6,17 +6,17 @@ public class CollisionWeapon : Weapon
 {
     [SerializeField] private bool deathOnCollision;
     private IHealth target;
-    private IWillDie owner;
+    private IKillable owner;
 
     public void Start()
     {
         if(deathOnCollision)
-            owner = GetComponent<IWillDie>();
+            owner = GetComponent<IKillable>();
     }
 
     public override void Attack() 
     {
-        target.ModifyHealth(attack); 
+        target.ReceiveDamae(attack); 
     }
 
     private void OnCollisionEnter(Collision collision)

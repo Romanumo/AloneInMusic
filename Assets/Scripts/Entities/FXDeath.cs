@@ -6,11 +6,11 @@ public class FXDeath : MonoBehaviour
 {
     [SerializeField] protected AudioSource audioSource;
     [SerializeField] protected FXEffect onDeath;
-    protected IWillDie deathOwner;
+    protected IKillable deathOwner;
 
     protected void Start()
     {
-        deathOwner = GetComponent<IWillDie>();
+        deathOwner = GetComponent<IKillable>();
 
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();

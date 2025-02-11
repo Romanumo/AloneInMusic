@@ -3911,7 +3911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7245717822810833968
 Transform:
   m_ObjectHideFlags: 0
@@ -4000,7 +4000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d51c49899726f48b1cbc5dd06ae65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 40
+  _maxHealth: 50
   _rangedStates:
   - _name: 
     _behaviour: {fileID: 8054166030364909198}

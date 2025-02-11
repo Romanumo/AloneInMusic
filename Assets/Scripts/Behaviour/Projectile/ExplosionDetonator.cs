@@ -7,11 +7,11 @@ public class ExplosionDetonator : MonoBehaviour
     //[SerializeField] private ParticleSystem explosionEffect;
     [SerializeField] private Projectile projectileStats;
     [SerializeField] private float explosionRadius;
-    private IWillDie detonator;
+    private IKillable detonator;
 
     void Start()
     {
-        detonator = GetComponent<IWillDie>();
+        detonator = GetComponent<IKillable>();
         detonator.OnDeath += Explosion;
     }
 
@@ -23,7 +23,7 @@ public class ExplosionDetonator : MonoBehaviour
         {
             IHealth health;
             hitCollider.gameObject.TryGetComponent(out health);
-            health?.ModifyHealth(projectileStats.attack);
+            health?.ReceiveDamae(projectileStats.attack);
         }
     }
 }

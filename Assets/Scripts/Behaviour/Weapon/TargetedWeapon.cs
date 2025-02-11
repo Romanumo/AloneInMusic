@@ -14,6 +14,6 @@ public class TargetedWeapon : Weapon
 
     public override void Attack()
     {
-        _targetStats.ModifyHealth(this.attack);
+        _targetStats.ReceiveDamae(this.attack);
     }
 }
