@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThrowerWeapon : Weapon
 {
     [SerializeField] private float bulletSpeed;
-    [SerializeField] private bool lookAtTargetWhileShooting = true;
+    [SerializeField] private bool lookAtTarget = true;
     [SerializeField] private Projectile projectile;
     [SerializeField] private Transform shootPoint;
 
@@ -20,7 +20,7 @@ public class ThrowerWeapon : Weapon
 
     public override void Attack()
     {
-        if(lookAtTargetWhileShooting)
+        if(lookAtTarget)
             transform.LookAt(owner.target);
         Vector3 shootPosition = shootTransform.position + this.transform.forward * 1.5f;
 

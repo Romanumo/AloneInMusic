@@ -10,6 +10,7 @@ public class WanderMovement : Movement
     public override void UpdateAction()
     {
         RaycastHit hit;
+
         if (Physics.Raycast(transform.position + transform.forward * 1.5f, transform.forward, out hit, sightRange))
         {
             Random.InitState(System.DateTime.UtcNow.Millisecond);

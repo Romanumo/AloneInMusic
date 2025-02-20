@@ -1280,6 +1280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bull
       objectReference: {fileID: 0}
+    - target: {fileID: 5465447646853251349, guid: 0bfbeb75b03b678469c7f966e0caddec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bfbeb75b03b678469c7f966e0caddec, type: 3}
 --- !u!1 &1056344532
@@ -2014,6 +2018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButterFlyBomber
       objectReference: {fileID: 0}
+    - target: {fileID: 5449353487940195887, guid: d8cf95d93a27f984c8cf97b114e5dbb8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8cf95d93a27f984c8cf97b114e5dbb8, type: 3}
 --- !u!1001 &1470230969
@@ -2084,6 +2092,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButterFlyAnt
       objectReference: {fileID: 0}
+    - target: {fileID: 3647892370175284182, guid: 4272c17a22c2ee44eb5be5c45bc552e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6637308439048210407, guid: 4272c17a22c2ee44eb5be5c45bc552e0, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2128,6 +2140,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6637308439048210411, guid: 4272c17a22c2ee44eb5be5c45bc552e0, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 4731396913091783745, guid: 02699539bab02eb40a846e4d74d36b42, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4272c17a22c2ee44eb5be5c45bc552e0, type: 3}
 --- !u!64 &1619633935
@@ -2283,6 +2299,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShotgunDrone
       objectReference: {fileID: 0}
+    - target: {fileID: 5925199453775875026, guid: 3e5a35f532510bc428d66b3c63a6e7cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7660048891926283576, guid: 3e5a35f532510bc428d66b3c63a6e7cd, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2383,6 +2403,10 @@ PrefabInstance:
     - target: {fileID: 2842560198268212254, guid: 02699539bab02eb40a846e4d74d36b42, type: 3}
       propertyPath: m_Name
       value: StickBug
+      objectReference: {fileID: 0}
+    - target: {fileID: 2842560198268212254, guid: 02699539bab02eb40a846e4d74d36b42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6354253016117208046, guid: 02699539bab02eb40a846e4d74d36b42, type: 3}
       propertyPath: _rangedStates.Array.size
@@ -9046,10 +9070,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851da3c0be4519a47b144bc365084cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 10
+  attack: 15
   reloadTime: 1.5
   bulletSpeed: 75
-  lookAtTargetWhileShooting: 0
+  lookAtTarget: 1
   projectile: {fileID: 8691628387711670826, guid: e938ab60fb446224c8d29368e31ad89c, type: 3}
   shootPoint: {fileID: 8603318603716620308}
 --- !u!114 &8603318604985764584
@@ -9064,7 +9088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f534c0e9257abb34fa7bd8d720583bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 8603318603716620311}
   onDeath:
     particle: {fileID: 0}
     audio: {fileID: 0}

@@ -1,0 +1,16 @@
+For Level Design:
+https://www.youtube.com/watch?v=YsBniZ5ya7k&t=146s
+
+For Player Controller:
+https://www.youtube.com/watch?v=2FTDa14nryI&list=PLfhbBaEcybmgidDH3RX_qzFM0mIxWJa21
+
+For UI:
+https://www.youtube.com/watch?v=HwdweCX5aMI&list=PLXD0wONGOSCKcUJHc4-7LIkEgvFvJ-nl1
+
+You might wanna focus on level game design and presentation now. Cause code is pretty oop as it is
+
+Code refactor: 
+* Abstract Weapon further
+* Separate attack from beavior of weapon and integrate into a bullet instead	
+* Make another sublclass for Weaponreloadable and make it SingleTimeBehavior instead of general weapon
+* Exclude any unnecessary varibales

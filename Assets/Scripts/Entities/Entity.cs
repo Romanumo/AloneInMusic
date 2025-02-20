@@ -29,12 +29,12 @@ public abstract class Entity : MonoBehaviour, IHealth
         onDeath += Die;
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         currentBehavior?.UpdateAction();
     }
 
-    public void ReceiveDamae(int attack)
+    public void ReceiveDamage(int attack)
     {
         _health -= attack;
 

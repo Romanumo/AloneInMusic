@@ -16,8 +16,10 @@ public class SeekerMovement : Movement
     public override void UpdateAction()
     {
         Vector3 direction = (target.position - transform.position).normalized;
+
         if(!isYRotationAllowed)
             direction.y = 0;
+
         Quaternion toTargetQuaternion = Quaternion.LookRotation(direction);
         rigidBody.rotation = Quaternion.Slerp(transform.rotation, toTargetQuaternion, rotationSpeed * Time.deltaTime * 20f);
 

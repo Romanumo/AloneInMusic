@@ -23,7 +23,7 @@ public class ExplosionDetonator : MonoBehaviour
         {
             IHealth health;
             hitCollider.gameObject.TryGetComponent(out health);
-            health?.ReceiveDamae(projectileStats.attack);
+            health?.ReceiveDamage(projectileStats.attack);
         }
     }
 }

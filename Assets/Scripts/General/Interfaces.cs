@@ -27,7 +27,7 @@ public interface IHealth : IKillable
 
     public Action OnHealthChanged { get; set; }
 
-    public void ReceiveDamae(int attack);
+    public void ReceiveDamage(int attack);
 }
 
 public interface ITargeted

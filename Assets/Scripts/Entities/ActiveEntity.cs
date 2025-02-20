@@ -19,7 +19,7 @@ public class ActiveEntity : Entity, IStateWatcher
         _target = FindObjectOfType<Player>();
     }
 
-    private void Update()
+    protected override void Update()
     {
         base.Update();
         UpdateState();

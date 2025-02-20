@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FXDeath : MonoBehaviour
 {
-    [SerializeField] protected AudioSource audioSource;
     [SerializeField] protected FXEffect onDeath;
+    protected AudioSource audioSource;
     protected IKillable deathOwner;
 
     protected void Start()
