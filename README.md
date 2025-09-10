@@ -1,13 +1,8 @@
 # AloneInMusic
-Short game, showcase of OOP (SOLID, DRY) principles, through easy-to-use behaviour system.
+Short game, showcase of OOP (SOLID, DRY) principles and code architecture, through easy-to-use behaviour system.
 This game encapsulates efficient way of structuring and keeping the code clean, reusable and intuitive
 
-### About The Game
-Periodically higher ups are going to send waves of evil entites, each with different abilities and behaviour. In this game you are in a test chamber, filled with several obstacles and surrounded with walls from all sides
-
-![image](https://github.com/Romanumo/AloneInMusic/assets/79278079/46b9279a-50a1-4009-b44f-e4d2743ed5f9)
-
-### Behaviour OOP System
+### Architecture
 Due to principles of OOP, behaviour building for enemies is very flexible and easy
 **Shortly**: Enemies have central behaviour script. Enemy state is mostly defined by how close player is to him
 
@@ -25,4 +20,9 @@ This is the first state. This behaviour is associated with seeker movement, mean
 
 Put together it will look like this
 https://github.com/Romanumo/AloneInMusic/assets/79278079/b6e25c3e-93c4-4709-9d8b-b65b09db8f3c
+
+### About The Game
+Periodically higher ups are going to send waves of evil entites, each with different abilities and behaviour. In this game you are in a test chamber, filled with several obstacles and surrounded with walls from all sides
+
+![image](https://github.com/Romanumo/AloneInMusic/assets/79278079/46b9279a-50a1-4009-b44f-e4d2743ed5f9)
 
